@@ -73,7 +73,7 @@ El diseño debe seguir fielmente el mockup proporcionado, respetando:
 ## Consejos y Recomendaciones
 
 - Planifica tu estructura de archivos antes de comenzar
-- Implementa primero la funcionalidad básica, luego mejora el UI
+- Implementa primero ciola funnalidad básica, luego mejora el UI
 - Utiliza módulos ES6 para organizar tu código
 - No olvides manejar adecuadamente los errores de la API
 - Implementa validaciones en los formularios

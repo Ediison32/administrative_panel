@@ -1,0 +1,60 @@
+{
+  "user": [
+    {
+      "id": "4",
+      "name": "Edison",
+      "email": "correo@ejemplo.com",
+      "phone": "222222222222222",
+      "enrollNumber": "555555",
+      "dateOfAdmission": "2025-07-23"
+    },
+    {
+      "id": "6",
+      "name": "Edison111111",
+      "email": "edisonalvarez32@gmail.com",
+      "phone": "111111111111",
+      "enrollNumber": "23434234",
+      "dateOfAdmission": "2025-07-17"
+    },
+    {
+      "id": "5",
+      "name": "2",
+      "email": "edisonalvarez32@gmail.com",
+      "phone": "3121312",
+      "enrollNumber": "3124324",
+      "dateOfAdmission": "2025-08-01"
+    },
+    {
+      "id": "4",
+      "name": "Edison",
+      "email": "edisonalvarez32@gmail.com",
+      "phone": "3192540456",
+      "enrollNumber": "23434",
+      "dateOfAdmission": "2025-07-29"
+    },
+    {
+      "id": "3",
+      "name": "jkira",
+      "email": "edisonalvarez32@gmail.com",
+      "phone": "3121312",
+      "enrollNumber": "3124324",
+      "dateOfAdmission": "2025-08-01"
+    },
+    {
+      "id": "2",
+      "name": "e3w",
+      "email": "edisonalvarez32@gmail.com",
+      "phone": "3121312",
+      "enrollNumber": "3124324",
+      "dateOfAdmission": "2025-08-01"
+    },
+    {
+      "id": "1",
+      "name": "rave",
+      "email": "edisonalvarez32@gmail.com",
+      "phone": "3121312",
+      "enrollNumber": "3124324",
+      "dateOfAdmission": "2025-08-01"
+    }
+  ]
+}

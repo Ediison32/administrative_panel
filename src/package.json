@@ -1,0 +1,29 @@
+{
+  "name": "reto-javascript-proyecto-spa",
+  "version": "1.0.0",
+  "description": "Desarrollar una **Single Page Application (SPA)** que funcione como un panel de administración de usuarios, implementando todas las operaciones CRUD y siguiendo fielmente el diseño proporcionado en el mockup.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "server" : "json-server --watch db.json --port 3001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Riwi-io-Medellin/reto-javascript-proyecto-SPA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Riwi-io-Medellin/reto-javascript-proyecto-SPA/issues"
+  },
+  "homepage": "https://github.com/Riwi-io-Medellin/reto-javascript-proyecto-SPA#readme",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
