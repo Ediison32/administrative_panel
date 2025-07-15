@@ -1,13 +1,36 @@
 
-import { get, add,modific, delet } from "./funtions/funtions.js"
+import { get, add, modific, delet, login } from "./funtions/funtions.js"
 import { rouetes } from "./routes/rutes.js";
 
 const url = 'http://localhost:3001/user';
 
 
+window.addEventListener("DOMContentLoaded", async ()=>{  // espera que cargue la pagina 
+
+    const userStorage = localStorage.getItem("userName");
+    const passwordStorage = localStorage.getItem("userPassword");
+
+    const loginStatus =document.getElementById("login-login")
+    if(userStorage &&passwordStorage){
+        loginStatus.innerHTML = "logaut"
+        
+        await whasStore(userStorage,passwordStorage)
+    }
+    loginStatus.addEventListener("click", ()=>{
+        localStorage.clear();
+        loginStatus.innerHTML = "Login"
+        document.getElementById("present").innerHTML = "";
+        document.getElementById("menu").style.display = "none";
+        history.pushState(null, null, "/login");
+        browser("/login");
+
+    })
+    
+})
 
 
-window.addEventListener("popstate", ()=>{ // evento llamado popstate
+
+window.addEventListener("popstate", ()=>{ // evento llamado popstate para navegar .. ojo 
     console.log(location);     // me muestra mas atributos 
     
     browser(location.pathname)// aqui llamamos location.pathname que me trael la ultima ruta en la que se esta
@@ -32,6 +55,8 @@ document.body.addEventListener("click", e => {
 async function browser(params, id = NaN) {
     
     const rot = rouetes[params];
+    console.log(rot);
+    
     const html = await fetch(rot).then(response => response.text());
     document.getElementById('root').innerHTML = html;
     history.pushState({}, "", params);  // historia
@@ -47,7 +72,6 @@ async function reneder(params, idU =NaN) {
     if(params == "/users"){
         console.log(`parametro = ${params}`);
         const data = await get(url)
-        console.log(data[0]);
         
         const html =document.getElementById("information");
 
@@ -59,13 +83,16 @@ async function reneder(params, idU =NaN) {
                 <th>${x.phone}</th>
                 <th>${x.enrollNumber}</th>
                 <th>${x.dateOfAdmission}</th>
-                <th><img src="./assets/img/pen.png" alt="pencil"  data-id=${x.id}  class = "iconPen"></th>
-                <th><img src="./assets/img/trash.png" alt="trash" data-id =${x.id} class = "icontrash"></th>
+                <th id = "img-iconpen" ><img src="./assets/img/pen.png"   alt="pencil"  data-id=${x.id} data-role-studen = "admin" class = "iconPen"></th>
+                <th id = "img-icontrash" ><img src="./assets/img/trash.png" alt="trash" data-id =${x.id} data-role-studen = "admin" class = "icontrash"></th>
 
             </tr>
         
             `).join('')
-            
+
+        mostraricon("admin")
+       
+         
     }else if(params == "/addStuden"){
 
         const formAddStudent = document.getElementById("studen-form");
@@ -213,8 +240,90 @@ async function reneder(params, idU =NaN) {
 
 
         
+    }else if (params == "/login"){
+    
+  
+        const loginClick = document.getElementById("login_user");
+        
+        loginClick.addEventListener("submit", async(e)=>{
+            
+            e.preventDefault();
+            const loginStatus =document.getElementById("login-login")
+            const nameLogin = document.getElementById("userName").value;
+            const passwordLogin = document.getElementById("Password").value;
+            console.log(`name login ${nameLogin} passwor login ${passwordLogin}`);
+
+            const evaluest = await login();
+
+            const foundUser = evaluest.find(user =>   // uso find si la persona existe retorna todo el objeto completo 
+                user.userName === nameLogin && user.password === passwordLogin
+            )
+            
+            if(!foundUser){
+                    alert(" Clave o usuario invalidos ")
+                }
+
+            whachLogin(foundUser)
+            whachMenu(foundUser.type)
+            loginStatus.innerHTML = "logaut"
+            browser("/users")
+        })
+
+        
+        
     }
 };
+
+async function whasStore(nameLogin, passwordLogin){
+    const evaluest = await login();
+    
+    
+    
+    const foundUser = evaluest.find( user =>
+
+        user.userName == nameLogin && user.password == passwordLogin
+    );
+    console.log(foundUser);
+    
+    if(foundUser){
+        whachLogin(foundUser)
+        
+        whachMenu(foundUser.type)
+    
+    }
+
+}
+
+
+
+//para mostar cualquier tipo de usuario 
+function whachLogin(docUser){
+    const htmlImg = document.getElementById("present");
+    htmlImg.innerHTML = `
+                    <img id="images"  src=${docUser.img} alt="user">
+                    <p id="topy">${docUser.type}</p>
+                    <p><span id="topyName">${docUser.userName}</span></p>`
+                    localStorage.setItem("userName", docUser.userName);  // set o agregro al local storage 
+                    docUser.status = true
+                    localStorage.setItem("userPassword", docUser.password);
+
+}
+
+
+
+
+// mostar para roles 
+function whachMenu(rol){
+    document.getElementById("menu").style.display = "block";
+    document.querySelectorAll(".menu-item").forEach(item =>{
+        const roles = item.getAttribute("data-role").split(",");
+        if(roles.includes(rol)){
+            item.style.display ="block"
+        }
+
+    })
+    
+}
 
 // funcion para escuchar 
 //class="edit-btn fa fa-pencil" data-id="${user.id}"
@@ -257,7 +366,9 @@ document.addEventListener("click", async (e)=>{
     }
 
 
-})
+});
+
+
 
 
 

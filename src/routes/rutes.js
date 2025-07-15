@@ -8,5 +8,7 @@ export const rouetes = {
     "/report": "../vies/report.html",
     "/settings":"../vies/settings.html",
     "/addStuden": "../vies/addStudent.html",
-    "/edit": "../vies/editStuden.html"
+    "/edit": "../vies/editStuden.html",
+    "/login": "../vies/login.html",
+    "/register": "../vies/register.html"
 }

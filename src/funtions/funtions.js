@@ -12,6 +12,7 @@ export async function get(url) {
 
         const res = await response.json();
 
+
         
         return res;
     }catch(error){
@@ -112,3 +113,12 @@ export async function delet(url, params) {
 //     return val
 // } 
 
+
+export async function login() {
+    //
+    const db = "admin"
+    const urlAdmin =`http://localhost:3001/admin`
+    const response = await get(urlAdmin)
+    return response
+
+}

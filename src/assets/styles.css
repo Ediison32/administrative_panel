@@ -1,3 +1,6 @@
+li{
+    list-style: none;
+}
 
 body{
     display: grid;
@@ -49,4 +52,37 @@ th, td {
     align-items: center;
     flex-direction: column;
 }
+
+.section-login{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    background-color: beige;
+    height: 45rem;
+}
+
+.login_user{
+    border-radius: 33px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 22rem;
+    background-color: #afc9bf;
+    height: 25rem;
+    padding: 45px;
+
+}
+
+.login-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.menu-item {
+   display: none;
+}
+
 
