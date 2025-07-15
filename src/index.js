@@ -23,6 +23,7 @@ window.addEventListener("DOMContentLoaded", async ()=>{  // espera que cargue la
         document.getElementById("menu").style.display = "none";
         history.pushState(null, null, "/login");
         browser("/login");
+        block()
 
     })
     
@@ -310,11 +311,18 @@ function whachLogin(docUser){
 }
 
 
+function block(){
+    document.getElementById("menu").style.display = "none";
+    document.querySelectorAll(".menu-item").forEach(item =>{
+        const roles = item.getAttribute("data-role").split(",");
+        item.style.display = "none"
+    }
+)}
 
 
 // mostar para roles 
 function whachMenu(rol){
-    document.getElementById("menu").style.display = "block";
+    document.getElementById("menu").style.display = "flex";
     document.querySelectorAll(".menu-item").forEach(item =>{
         const roles = item.getAttribute("data-role").split(",");
         if(roles.includes(rol)){
